@@ -316,22 +316,6 @@
             window.getIsBannerSupported = function() {
                 return bridge.advertisement.isBannerSupported.toString()
             }
-			
-			function ShowVKBannerAd(){
-			    bridge.send('VKWebAppShowBannerAd', {
-  banner_location: 'bottom'
-  })
- .then((data) => { 
-    if (data.result) {
-      // Баннерная реклама отобразилась
-    }
-  })
-  .catch((error) => {
-    // Ошибка
-    console.log(error);
-  });
-
-			}
 
             window.getIsBannerShowing = function() {
                 return bridge.advertisement.isBannerShowing.toString()
