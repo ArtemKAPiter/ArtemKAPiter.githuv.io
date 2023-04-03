@@ -133,14 +133,14 @@
                     bridge.game.on('visibility_state_changed', state => sendMessageToUnity('OnVisibilityStateChanged', state))
 
                     let unityLoader = document.createElement('script')
-                    unityLoader.src = 'Build/FortuneWheel.loader.js'
+                    unityLoader.src = 'Build/New.loader.js'
                     unityLoader.onload = () => {
                         createUnityInstance(
                             canvas,
                             {
-                                dataUrl: 'Build/FortuneWheel.data',
-                                frameworkUrl: 'Build/FortuneWheel.framework.js',
-                                codeUrl: 'Build/FortuneWheel.wasm',
+                                dataUrl: 'Build/New.data',
+                                frameworkUrl: 'Build/New.framework.js',
+                                codeUrl: 'Build/New.wasm',
                                 streamingAssetsUrl: 'StreamingAssets',
                                 companyName: 'DefaultCompany',
                                 productName: 'FortuneWheel',
