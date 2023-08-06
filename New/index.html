@@ -48,7 +48,7 @@
             }
         </style>
     </head>
-    <body>
+   <body>
         <canvas id="canvas" class="fullscreen"></canvas>
         <div id="loading-overlay" class="fullscreen">
             <img id="icon" src="./icon.png" />
@@ -142,7 +142,7 @@
                                 frameworkUrl: 'Build/New.framework.js',
                                 codeUrl: 'Build/New.wasm',
                                 streamingAssetsUrl: 'StreamingAssets',
-                                companyName: 'CosmoCats',
+                                companyName: 'DefaultCompany',
                                 productName: 'FortuneWheel',
                                 productVersion: '0.1',
                                 // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
@@ -153,6 +153,7 @@
                                 window.unityInstance = unityInstance
                                 loadingOverlay.remove()
                                 canvas.focus()
+                                ShowBannerAd()
                             })
                             .catch((error) => {
                                 console.error(error)
@@ -162,7 +163,7 @@
                 })
                 .catch(error => console.error(error))
             
-
+                   
             // platform
             window.getPlatformId = function() {
                 return bridge.platform.id
@@ -284,6 +285,22 @@
                     .catch(error => {
                         sendMessageToUnity('OnGetStorageDataFailed', key)
                     })
+            }
+
+            function ShowBannerAd(){
+                vkBridge.send('VKWebAppShowBannerAd', {
+  banner_location: 'bottom',
+can_close: false
+  })
+ .then((data) => { 
+    if (data.result) {
+      // Баннерная реклама отобразилась
+    }
+  })
+  .catch((error) => {
+    // Ошибка
+    console.log(error);
+  });
             }
 
             window.setStorageData = function(key, value, storageType) {
